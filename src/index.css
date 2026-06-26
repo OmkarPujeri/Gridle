@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg-primary: #0f1115;
+  --bg-secondary: #1a1d24;
+  --bg-glass: rgba(26, 29, 36, 0.7);
+  --text-primary: #ffffff;
+  --text-secondary: #a0aab2;
+  --accent-red: #e10600;
+  --accent-red-hover: #ff1e15;
+  
+  --correct: #00b84b;
+  --partial: #ffb800;
+  --incorrect: #2a2d34;
+  --incorrect-red: var(--accent-red);
+  --too-low: #b35900;
+  --too-high: #5a2c85;
+  
+  --border-radius: 8px;
+  --border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.color-blind {
+  --correct: #f5793a; /* High Contrast Orange */
+  --partial: #85c0f9; /* High Contrast Blue */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+input {
+  font-family: inherit;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes flipIn {
+  0% { transform: rotateX(-90deg); opacity: 0; }
+  100% { transform: rotateX(0); opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.animate-flip {
+  animation: flipIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes popInEmpty {
+  0% { opacity: 0; transform: scale(0.9); }
+  100% { opacity: 0.5; transform: scale(1); }
+}
+
+.animate-pop {
+  animation: popInEmpty 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+}
