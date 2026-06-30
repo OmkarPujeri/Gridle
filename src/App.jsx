@@ -6,6 +6,7 @@ import { GuessGrid } from './components/GuessGrid';
 import { InstructionsModal } from './components/InstructionsModal';
 import { SettingsModal } from './components/SettingsModal';
 import { StatsModal } from './components/StatsModal';
+import { InfoModal } from './components/InfoModal';
 import { GameResult } from './components/GameResult';
 import { MultiplayerView } from './components/MultiplayerView';
 import { useGameEngine } from './hooks/useGameEngine';
@@ -24,6 +25,7 @@ function App() {
   }, [mode]);
 
   const [isInstructionsOpen, setIsInstructionsOpen] = useState(false);
+  const [isInfoOpen, setIsInfoOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isStatsOpen, setIsStatsOpen] = useState(false);
   const [isColorBlindMode, setIsColorBlindMode] = useState(() => {
@@ -97,6 +99,7 @@ function App() {
         mode={mode} 
         setMode={setMode} 
         onOpenInstructions={() => setIsInstructionsOpen(true)}
+        onOpenInfo={() => setIsInfoOpen(true)}
         onOpenSettings={() => setIsSettingsOpen(true)}
         onOpenStats={() => setIsStatsOpen(true)}
         onReset={mode === 'infinite' ? resetInfinite : resetDaily}
@@ -139,6 +142,11 @@ function App() {
       <InstructionsModal 
         isOpen={isInstructionsOpen} 
         onClose={() => setIsInstructionsOpen(false)} 
+      />
+
+      <InfoModal 
+        isOpen={isInfoOpen} 
+        onClose={() => setIsInfoOpen(false)} 
       />
 
       <SettingsModal

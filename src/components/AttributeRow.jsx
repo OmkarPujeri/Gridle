@@ -58,7 +58,14 @@ const Tile = ({ value, status, label, delay, showArrow, imageUrl, isHardMode }) 
 
 export const AttributeRow = ({ guess, target, isHeader, isEmpty, rowIndex = 0, isHardMode }) => {
   if (isHeader) {
-    const headers = ['Driver', 'Nat.', 'Team', 'Age', 'Wins'];
+    const headers = [
+      'Driver', 
+      <React.Fragment key="nat">
+        <span className="desktop-only">Nationality</span>
+        <span className="mobile-only">Nat.</span>
+      </React.Fragment>, 
+      'Team', 'Age', 'Wins'
+    ];
     return (
       <div className="guess-row">
         {headers.map((h, i) => (

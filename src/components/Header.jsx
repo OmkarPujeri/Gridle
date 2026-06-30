@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { HelpCircle, Info, RefreshCw, Settings, BarChart2 } from 'lucide-react';
 
-export const Header = ({ mode, setMode, onOpenInstructions, onOpenSettings, onOpenStats, onReset }) => {
-  const [showInfo, setShowInfo] = useState(false);
-
+export const Header = ({ mode, setMode, onOpenInstructions, onOpenSettings, onOpenStats, onOpenInfo, onReset }) => {
   return (
     <header style={{
       display: 'flex',
@@ -16,44 +14,22 @@ export const Header = ({ mode, setMode, onOpenInstructions, onOpenSettings, onOp
     }}>
       <div style={{ position: 'relative', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '8px' }}>
         
-        <div style={{ position: 'absolute', left: 0, display: 'flex', gap: '16px', alignItems: 'center' }}>
+        <div className="header-actions" style={{ position: 'absolute', left: 0 }}>
           <button onClick={onOpenInstructions} style={{ color: 'var(--text-secondary)', display: 'flex', alignItems: 'center', justifyContent: 'center' }} title="How to Play" className="hover-opacity">
             <HelpCircle size={28} />
           </button>
           
-          <div style={{ position: 'relative' }}>
-            <button 
-              onClick={() => setShowInfo(!showInfo)}
-              onMouseEnter={() => setShowInfo(true)}
-              onMouseLeave={() => setShowInfo(false)}
-              style={{ color: 'var(--text-secondary)', display: 'flex', alignItems: 'center', justifyContent: 'center' }} 
-              className="hover-opacity"
-            >
-              <Info size={24} />
-            </button>
-            {showInfo && (
-              <div className="glass animate-fade-in" style={{
-                position: 'absolute',
-                top: '100%',
-                left: 0,
-                marginTop: '12px',
-                width: '260px',
-                padding: '16px',
-                borderRadius: '12px',
-                zIndex: 100,
-                fontSize: '13px',
-                color: 'var(--text-primary)',
-                lineHeight: '1.5',
-                boxShadow: '0 10px 30px rgba(0,0,0,0.5)'
-              }}>
-                <strong>Database:</strong> 40 drivers, including all racers from 2017+ and iconic Formula 1 legends.<br/><br/>
-                <strong>Stats updated to:</strong><br/>Austrian Grand Prix 2026.
-              </div>
-            )}
-          </div>
+          <button 
+            onClick={onOpenInfo}
+            style={{ color: 'var(--text-secondary)', display: 'flex', alignItems: 'center', justifyContent: 'center' }} 
+            title="Database Info"
+            className="hover-opacity"
+          >
+            <Info size={28} />
+          </button>
         </div>
 
-        <h1 style={{ 
+        <h1 className="header-title" style={{ 
           fontSize: '40px', 
           fontWeight: 800, 
           letterSpacing: '-1.5px',
@@ -62,7 +38,7 @@ export const Header = ({ mode, setMode, onOpenInstructions, onOpenSettings, onOp
           GRID<span style={{ color: 'var(--accent-red)' }}>LE</span>
         </h1>
 
-        <div style={{ position: 'absolute', right: 0, display: 'flex', gap: '16px' }}>
+        <div className="header-actions" style={{ position: 'absolute', right: 0 }}>
           {mode === 'infinite' && (
             <button onClick={onReset} style={{ color: 'var(--text-secondary)', display: 'flex', alignItems: 'center', justifyContent: 'center' }} title="Restart Game" className="hover-opacity">
               <RefreshCw size={28} />

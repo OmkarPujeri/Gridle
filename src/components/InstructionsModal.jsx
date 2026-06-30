@@ -77,27 +77,6 @@ export const InstructionsModal = ({ isOpen, onClose }) => {
           </div>
         </div>
 
-        <div style={{
-          marginTop: '24px',
-          padding: '16px',
-          backgroundColor: 'rgba(255,255,255,0.05)',
-          borderRadius: '8px',
-          borderLeft: '4px solid var(--accent-red)',
-          display: 'flex',
-          gap: '12px',
-          alignItems: 'flex-start'
-        }}>
-          <Info size={20} color="var(--accent-red)" style={{ flexShrink: 0, marginTop: '2px' }} />
-          <div style={{ fontSize: '13px', color: 'var(--text-secondary)', lineHeight: '1.6' }}>
-            <p style={{ marginBottom: '8px' }}>
-              <strong>Database:</strong> Features <strong>{drivers.length}</strong> drivers, including all racers from the 2017 season onwards, plus a curated selection of iconic Formula 1 legends.
-            </p>
-            <p>
-              <strong>Stats:</strong> Driver statistics (Wins, Age, Teams) are updated up to the <strong>Austrian Grand Prix 2026</strong>.
-            </p>
-          </div>
-        </div>
-
       </div>
     </div>
   );

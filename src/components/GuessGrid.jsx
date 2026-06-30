@@ -11,7 +11,6 @@ export const GuessGrid = ({ guesses, targetDriver, isHardMode }) => {
     <div style={{
       display: 'flex',
       flexDirection: 'column',
-      alignItems: 'center',
       marginTop: '24px',
       overflowX: 'auto',
       paddingBottom: '24px',
