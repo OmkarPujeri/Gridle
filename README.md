@@ -58,6 +58,6 @@ Designed with a sleek dark mode, glassmorphic UI elements, dynamic flag/logo ico
 
 ---
 
-## 🏷️ SEO & Keywords
+## 🏷️ Keywords
 F1 Wordle, Formula 1 Wordle, Gridle F1, Formula 1 Driver Guessing Game, Guess the F1 Driver, Daily F1 Game, F1 Puzzle, Wordle clone F1, Formula 1 stats game, F1 Gridle clone, motorsport daily game, real-time multiplayer wordle, 1v1 wordle racing.
 

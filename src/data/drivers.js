@@ -60,7 +60,7 @@ export const drivers = [
     countryCode: "gb",
     team: "Mercedes",
     age: 28,
-    wins: 6
+    wins: 7
   },
   {
     id: 8,

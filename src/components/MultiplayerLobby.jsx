@@ -122,7 +122,7 @@ export const MultiplayerLobby = ({ phase, roomCode, error, onCreate, onJoin, onL
           placeholder="ENTER CODE"
           maxLength={5}
           style={{
-            flex: 1, padding: '14px', borderRadius: '12px',
+            flex: 1, minWidth: 0, padding: '14px', borderRadius: '12px',
             background: 'var(--bg-secondary)', color: 'var(--text-primary)',
             border: '1px solid var(--border-color)',
             fontSize: '18px', fontWeight: 700, letterSpacing: '4px',

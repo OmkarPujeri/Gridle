@@ -195,10 +195,10 @@ input {
     font-size: 14px;
   }
   
-  /* Move opponent grid to the top on mobile so it doesn't overflow horizontally */
+  /* Move opponent grid below the main grid on mobile so the input stays visible */
   .multiplayer-layout {
     display: flex;
-    flex-direction: column-reverse; /* Opponent grid on top */
+    flex-direction: column;
     gap: 20px;
     align-items: center;
   }

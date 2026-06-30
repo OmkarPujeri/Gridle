@@ -1,5 +1,5 @@
 import React from 'react';
-import { Info, RefreshCw, Settings, BarChart2 } from 'lucide-react';
+import { HelpCircle, RefreshCw, Settings, BarChart2 } from 'lucide-react';
 
 export const Header = ({ mode, setMode, onOpenInstructions, onOpenSettings, onOpenStats, onReset }) => {
   return (
@@ -16,7 +16,7 @@ export const Header = ({ mode, setMode, onOpenInstructions, onOpenSettings, onOp
         
         <div style={{ position: 'absolute', left: 0, display: 'flex', gap: '16px' }}>
           <button onClick={onOpenInstructions} style={{ color: 'var(--text-secondary)', display: 'flex', alignItems: 'center', justifyContent: 'center' }} title="How to Play" className="hover-opacity">
-            <Info size={28} />
+            <HelpCircle size={28} />
           </button>
         </div>
 

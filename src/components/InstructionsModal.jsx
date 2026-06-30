@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Info, ArrowUp, ArrowDown } from 'lucide-react';
+import { X, HelpCircle, ArrowUp, ArrowDown, Info } from 'lucide-react';
 import { drivers } from '../data/drivers';
 
 export const InstructionsModal = ({ isOpen, onClose }) => {
@@ -41,7 +41,7 @@ export const InstructionsModal = ({ isOpen, onClose }) => {
         </button>
 
         <h2 style={{ fontSize: '24px', marginBottom: '24px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <Info size={28} color="var(--accent-red)" />
+          <HelpCircle size={28} color="var(--accent-red)" />
           How to Play
         </h2>
 
@@ -82,11 +82,20 @@ export const InstructionsModal = ({ isOpen, onClose }) => {
           padding: '16px',
           backgroundColor: 'rgba(255,255,255,0.05)',
           borderRadius: '8px',
-          borderLeft: '4px solid var(--accent-red)'
+          borderLeft: '4px solid var(--accent-red)',
+          display: 'flex',
+          gap: '12px',
+          alignItems: 'flex-start'
         }}>
-          <p style={{ fontSize: '12px', color: 'var(--text-secondary)', lineHeight: '1.5' }}>
-            <strong>Note:</strong> Driver statistics and information are updated up to the last Grand Prix of Barcelona 2026.
-          </p>
+          <Info size={20} color="var(--accent-red)" style={{ flexShrink: 0, marginTop: '2px' }} />
+          <div style={{ fontSize: '13px', color: 'var(--text-secondary)', lineHeight: '1.6' }}>
+            <p style={{ marginBottom: '8px' }}>
+              <strong>Database:</strong> Features <strong>{drivers.length}</strong> drivers, including all racers from the 2017 season onwards, plus a curated selection of iconic Formula 1 legends.
+            </p>
+            <p>
+              <strong>Stats:</strong> Driver statistics (Wins, Age, Teams) are updated up to the <strong>Austrian Grand Prix 2026</strong>.
+            </p>
+          </div>
         </div>
 
       </div>

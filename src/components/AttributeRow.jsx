@@ -58,7 +58,7 @@ const Tile = ({ value, status, label, delay, showArrow, imageUrl, isHardMode }) 
 
 export const AttributeRow = ({ guess, target, isHeader, isEmpty, rowIndex = 0, isHardMode }) => {
   if (isHeader) {
-    const headers = ['Driver', 'Nationality', 'Team', 'Age', 'Wins'];
+    const headers = ['Driver', 'Nat.', 'Team', 'Age', 'Wins'];
     return (
       <div className="guess-row">
         {headers.map((h, i) => (
