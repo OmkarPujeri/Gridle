@@ -118,9 +118,9 @@ export const MultiplayerView = () => {
         </button>
       </div>
 
-      {/* Race layout: centered main board, opponent grid floated right */}
-      <div style={{ position: 'relative', width: '100%' }}>
-        {/* My board — centered exactly like Daily/Infinite */}
+      {/* Race layout: responsive container that handles mobile wrapping */}
+      <div className="multiplayer-layout">
+        {/* My board */}
         <div style={{ width: '100%' }}>
           <GuessInput
             onGuess={submitGuess}
@@ -137,13 +137,8 @@ export const MultiplayerView = () => {
           <GuessGrid guesses={guesses} targetDriver={targetDriver} isHardMode={false} />
         </div>
 
-        {/* Opponent mini-grid — floated to the right, doesn't affect main board centering */}
-        <div style={{
-          position: 'absolute',
-          top: '8px',
-          right: '-8px',
-          transform: 'translateX(100%)',
-        }}>
+        {/* Opponent mini-grid */}
+        <div className="opponent-wrapper">
           <OpponentGrid opponent={opponent} />
         </div>
       </div>

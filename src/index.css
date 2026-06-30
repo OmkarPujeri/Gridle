@@ -89,3 +89,144 @@ input {
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-color);
 }
+
+/* Responsive Grid and Tiles */
+.guess-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+  width: 100%;
+  max-width: 532px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.guess-row > * {
+  flex: 1;
+  min-width: 0;
+}
+
+.tile-header {
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 600;
+  width: 100%;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 85px;
+  border-radius: var(--border-radius);
+  color: #fff;
+  padding: 6px;
+  text-align: center;
+  animation-fill-mode: forwards;
+  overflow: hidden;
+  position: relative;
+}
+
+.tile-img {
+  object-fit: contain;
+  object-position: center;
+  filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5));
+}
+
+.tile-text-img {
+  font-size: 10px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.1;
+  max-width: 80px;
+  word-break: break-word;
+  color: #fff;
+}
+
+.tile-text-val {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-weight: 600;
+  font-size: 20px;
+  z-index: 2;
+  text-align: center;
+}
+
+/* Multiplayer specific Layout */
+.multiplayer-layout {
+  position: relative;
+  width: 100%;
+}
+
+.opponent-wrapper {
+  position: absolute;
+  top: 8px;
+  right: -8px;
+  transform: translateX(100%);
+}
+
+@media (max-width: 768px) {
+  .guess-row {
+    gap: 4px;
+  }
+  
+  .tile {
+    height: 70px;
+    padding: 4px;
+  }
+  
+  .tile-header {
+    font-size: 10px;
+  }
+  
+  .tile-img {
+    max-height: 28px !important;
+  }
+  
+  .tile-text-img {
+    font-size: 8px;
+  }
+  
+  .tile-text-val {
+    font-size: 14px;
+  }
+  
+  /* Move opponent grid to the top on mobile so it doesn't overflow horizontally */
+  .multiplayer-layout {
+    display: flex;
+    flex-direction: column-reverse; /* Opponent grid on top */
+    gap: 20px;
+    align-items: center;
+  }
+  
+  .opponent-wrapper {
+    position: relative;
+    top: auto;
+    right: auto;
+    transform: none;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.main-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px 24px 24px;
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .main-container {
+    padding: 0px 12px 24px;
+  }
+}

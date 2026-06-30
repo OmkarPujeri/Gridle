@@ -102,16 +102,7 @@ function App() {
         onReset={mode === 'infinite' ? resetInfinite : resetDaily}
       />
 
-      <main style={{
-        flex: 1,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        padding: '0px 24px 24px',
-        maxWidth: '800px',
-        margin: '0 auto',
-        width: '100%'
-      }}>
+      <main className="main-container">
 
         {mode === 'multiplayer' ? (
           <MultiplayerView />
