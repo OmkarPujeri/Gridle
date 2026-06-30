@@ -10,7 +10,14 @@ import { GameResult } from './components/GameResult';
 import { useGameEngine } from './hooks/useGameEngine';
 
 function App() {
-  const [mode, setMode] = useState('daily');
+  const [mode, setMode] = useState(() => {
+    return localStorage.getItem('f1wordle_mode') || 'daily';
+  });
+
+  useEffect(() => {
+    localStorage.setItem('f1wordle_mode', mode);
+  }, [mode]);
+
   const [isInstructionsOpen, setIsInstructionsOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isStatsOpen, setIsStatsOpen] = useState(false);

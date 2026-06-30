@@ -30,5 +30,13 @@ export const driverPhotos = {
   "Oliver Bearman": "/assets/drivers/oliver_bearman.png",
   "Arvid Lindblad": "/assets/drivers/arvid_lindblad.png",
   "Franco Colapinto": "/assets/drivers/franco_colapinto.png",
-  "Romain Grosjean": "/assets/drivers/romain_grosjean.png"
+  "Romain Grosjean": "/assets/drivers/romain_grosjean.png",
+  "Felipe Massa": "/assets/drivers/felipe_massa.png",
+  "Mick Schumacher": "/assets/drivers/mick_schumacher.png",
+  "Michael Schumacher": "/assets/drivers/michael_schumacher.png",
+  "Alain Prost": "/assets/drivers/alain_prost.png",
+  "Niki Lauda": "/assets/drivers/niki_lauda.png",
+  "Mika Hakkinen": "/assets/drivers/mika_hakkinen.png",
+  "Jenson Button": "/assets/drivers/jenson_button.png",
+  "Nico Rosberg": "/assets/drivers/nico_rosberg.png"
 };
