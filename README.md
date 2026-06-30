@@ -1,5 +1,7 @@
 # Gridle - The Ultimate F1 Wordle Game (Formula 1 Driver Guessing Game)
 
+**🏁 Play Live Now:** [https://gridlef1.vercel.app/](https://gridlef1.vercel.app/)
+
 Gridle is a premium, high-performance Formula 1 Wordle clone built using React and Vite. Test your F1 knowledge daily or play in infinite mode to guess the mystery driver based on their team, age, nationality, wins, and career stats.
 
 Designed with a sleek, responsive dark mode, glassmorphic UI elements, dynamic flag/logo icons, a persistent statistics engine, and an interactive hint system, it is the perfect daily puzzle for every motorsport fan.
