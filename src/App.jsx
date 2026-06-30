@@ -7,6 +7,7 @@ import { InstructionsModal } from './components/InstructionsModal';
 import { SettingsModal } from './components/SettingsModal';
 import { StatsModal } from './components/StatsModal';
 import { GameResult } from './components/GameResult';
+import { MultiplayerView } from './components/MultiplayerView';
 import { useGameEngine } from './hooks/useGameEngine';
 
 function App() {
@@ -15,7 +16,11 @@ function App() {
   });
 
   useEffect(() => {
-    localStorage.setItem('f1wordle_mode', mode);
+    // Don't persist multiplayer as the startup mode — a refresh should land
+    // back in a solo mode, not a dead room.
+    if (mode !== 'multiplayer') {
+      localStorage.setItem('f1wordle_mode', mode);
+    }
   }, [mode]);
 
   const [isInstructionsOpen, setIsInstructionsOpen] = useState(false);
@@ -97,41 +102,47 @@ function App() {
         onReset={mode === 'infinite' ? resetInfinite : resetDaily}
       />
 
-      <main style={{ 
-        flex: 1, 
-        display: 'flex', 
-        flexDirection: 'column', 
+      <main style={{
+        flex: 1,
+        display: 'flex',
+        flexDirection: 'column',
         alignItems: 'center',
         padding: '0px 24px 24px',
         maxWidth: '800px',
         margin: '0 auto',
         width: '100%'
       }}>
-        
-        <div style={{ width: '100%', marginBottom: '16px', zIndex: 20 }}>
-          <GuessInput 
-            onGuess={submitGuess} 
-            disabled={gameStatus !== 'playing'} 
-            guesses={guesses}
-            isHardMode={isHardMode}
-            isHintsEnabled={isHintsEnabled}
-            hintMessage={hintMessage}
-            isHintClosed={isHintClosed}
-            onUseHint={revealHint}
-            onCloseHint={closeHint}
-          />
-        </div>
 
-        <GuessGrid guesses={guesses} targetDriver={targetDriver} isHardMode={isHardMode} />
-        
-        <GameResult 
-          targetDriver={targetDriver}
-          gameStatus={gameStatus}
-          guesses={guesses}
-          mode={mode}
-          onReset={mode === 'infinite' ? resetInfinite : resetDaily}
-        />
-        
+        {mode === 'multiplayer' ? (
+          <MultiplayerView />
+        ) : (
+          <>
+            <div style={{ width: '100%', marginBottom: '16px', zIndex: 20 }}>
+              <GuessInput
+                onGuess={submitGuess}
+                disabled={gameStatus !== 'playing'}
+                guesses={guesses}
+                isHardMode={isHardMode}
+                isHintsEnabled={isHintsEnabled}
+                hintMessage={hintMessage}
+                isHintClosed={isHintClosed}
+                onUseHint={revealHint}
+                onCloseHint={closeHint}
+              />
+            </div>
+
+            <GuessGrid guesses={guesses} targetDriver={targetDriver} isHardMode={isHardMode} />
+
+            <GameResult
+              targetDriver={targetDriver}
+              gameStatus={gameStatus}
+              guesses={guesses}
+              mode={mode}
+              onReset={mode === 'infinite' ? resetInfinite : resetDaily}
+            />
+          </>
+        )}
+
       </main>
 
       <InstructionsModal 

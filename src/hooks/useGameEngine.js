@@ -31,9 +31,12 @@ export const useGameEngine = (mode = 'daily') => {
   };
 
   useEffect(() => {
+    // Only the solo modes are handled here; multiplayer has its own engine.
+    if (mode !== 'daily' && mode !== 'infinite') return;
+
     let selectedDriver;
     let savedState = null;
-    
+
     const today = new Date();
     const dateString = `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`;
 
@@ -85,7 +88,8 @@ export const useGameEngine = (mode = 'daily') => {
 
   useEffect(() => {
     if (!targetDriver) return;
-    
+    if (mode !== 'daily' && mode !== 'infinite') return; // don't persist in multiplayer
+
     const today = new Date();
     const dateString = `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`;
     

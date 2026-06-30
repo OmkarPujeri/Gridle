@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowUp, ArrowDown } from 'lucide-react';
 import { teamLogos } from '../data/teamLogos';
 import { driverPhotos } from '../data/driverPhotos';
+import { compareDriver } from '../data/driverCompare';
 
 const Tile = ({ value, status, label, delay, showArrow, imageUrl, isHardMode }) => {
   const getBgColor = () => {
@@ -94,25 +95,19 @@ export const AttributeRow = ({ guess, target, isHeader, isEmpty, rowIndex = 0, i
     );
   }
 
-  const checkNum = (gVal, tVal) => {
-    if (gVal === tVal) return { status: 'correct', arrow: null };
-    return { status: 'incorrect', arrow: gVal < tVal ? 'up' : 'down' };
-  };
-
-  const getNatStatus = () => guess.countryCode === target.countryCode ? 'correct' : 'incorrect-red';
-  const getTeamStatus = () => guess.team === target.team ? 'correct' : 'incorrect-red';
-
   const driverPhoto = driverPhotos[guess.name] || `https://ui-avatars.com/api/?name=${encodeURIComponent(guess.name)}&background=2a2d34&color=fff&size=100`;
   const flagUrl = `https://flagcdn.com/w80/${guess.countryCode}.png`;
-  
+
   const teamLogo = teamLogos[guess.team] || `https://ui-avatars.com/api/?name=${encodeURIComponent(guess.team)}&background=2a2d34&color=fff&size=100`;
 
+  // Status + arrow come from the shared comparison helper; values/images stay local.
+  const [driverCmp, natCmp, teamCmp, ageCmp, winsCmp] = compareDriver(guess, target);
   const results = [
-    { label: 'Driver', value: guess.name.split(' ').pop(), imageUrl: driverPhoto, status: guess.id === target.id ? 'correct' : 'incorrect' },
-    { label: 'Nationality', value: guess.nationality, imageUrl: flagUrl, status: getNatStatus() },
-    { label: 'Team', value: guess.team, imageUrl: teamLogo, status: getTeamStatus() },
-    { label: 'Age', value: guess.age, ...checkNum(guess.age, target.age) },
-    { label: 'Wins', value: guess.wins, ...checkNum(guess.wins, target.wins) },
+    { label: 'Driver', value: guess.name.split(' ').pop(), imageUrl: driverPhoto, ...driverCmp },
+    { label: 'Nationality', value: guess.nationality, imageUrl: flagUrl, ...natCmp },
+    { label: 'Team', value: guess.team, imageUrl: teamLogo, ...teamCmp },
+    { label: 'Age', value: guess.age, ...ageCmp },
+    { label: 'Wins', value: guess.wins, ...winsCmp },
   ];
 
   return (

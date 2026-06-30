@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Search, Lightbulb, X } from 'lucide-react';
 import { drivers } from '../data/drivers';
 
-export const GuessInput = ({ onGuess, disabled, guesses, isHardMode, isHintsEnabled, hintMessage, isHintClosed, onUseHint, onCloseHint }) => {
+export const GuessInput = ({ onGuess, disabled, guesses, isHardMode, isHintsEnabled, hintMessage, isHintClosed, onUseHint, onCloseHint, isMultiplayer = false }) => {
   const [query, setQuery] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [isHintHovered, setIsHintHovered] = useState(false);
@@ -30,9 +30,10 @@ export const GuessInput = ({ onGuess, disabled, guesses, isHardMode, isHintsEnab
     setIsOpen(false);
   };
 
-  const hintDisabled = isHardMode || !isHintsEnabled || hintMessage || guesses.length < 3 || disabled;
+  const hintDisabled = isMultiplayer || isHardMode || !isHintsEnabled || hintMessage || guesses.length < 3 || disabled;
   let hintTooltip = "Click for a hint";
-  if (isHardMode) hintTooltip = "No hints in Hard Mode";
+  if (isMultiplayer) hintTooltip = "No hints in 1v1";
+  else if (isHardMode) hintTooltip = "No hints in Hard Mode";
   else if (!isHintsEnabled) hintTooltip = "Hints are disabled. Enable them in settings";
   else if (hintMessage) hintTooltip = "Hint used";
   else if (disabled) hintTooltip = "Game over";
@@ -108,16 +109,18 @@ export const GuessInput = ({ onGuess, disabled, guesses, isHardMode, isHintsEnab
             }}
           >
             <Lightbulb size={24} />
-            
-            <div style={{
-              position: 'absolute', top: '-6px', right: '-6px',
-              background: hintMessage ? 'var(--text-secondary)' : 'var(--text-primary)',
-              color: 'var(--bg-primary)', width: '20px', height: '20px', borderRadius: '10px',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontSize: '12px', fontWeight: 800, boxShadow: '0 2px 4px rgba(0,0,0,0.5)', zIndex: 10
-            }}>
-              {hintMessage ? '0' : '1'}
-            </div>
+
+            {!isMultiplayer && (
+              <div style={{
+                position: 'absolute', top: '-6px', right: '-6px',
+                background: hintMessage ? 'var(--text-secondary)' : 'var(--text-primary)',
+                color: 'var(--bg-primary)', width: '20px', height: '20px', borderRadius: '10px',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                fontSize: '12px', fontWeight: 800, boxShadow: '0 2px 4px rgba(0,0,0,0.5)', zIndex: 10
+              }}>
+                {hintMessage ? '0' : '1'}
+              </div>
+            )}
           </button>
           
           {isHintHovered && (

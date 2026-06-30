@@ -74,7 +74,7 @@ export const Header = ({ mode, setMode, onOpenInstructions, onOpenSettings, onOp
           >
             Daily
           </button>
-          <button 
+          <button
             onClick={() => setMode('infinite')}
             style={{
               padding: '8px 24px',
@@ -87,6 +87,20 @@ export const Header = ({ mode, setMode, onOpenInstructions, onOpenSettings, onOp
             }}
           >
             Infinite
+          </button>
+          <button
+            onClick={() => setMode('multiplayer')}
+            style={{
+              padding: '8px 24px',
+              borderRadius: '20px',
+              fontSize: '15px',
+              fontWeight: 600,
+              background: mode === 'multiplayer' ? 'var(--accent-red)' : 'transparent',
+              color: mode === 'multiplayer' ? '#fff' : 'var(--text-secondary)',
+              transition: 'all 0.2s ease'
+            }}
+          >
+            1v1
           </button>
         </div>
 
